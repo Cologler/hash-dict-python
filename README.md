@@ -4,9 +4,9 @@
 [![Build Status](https://travis-ci.com/Cologler/hash-dict-python.svg?branch=master)](https://travis-ci.com/Cologler/hash-dict-python)
 [![PyPI](https://img.shields.io/pypi/v/hash-dict.svg)](https://pypi.org/project/hash-dict/)
 
-Allow python dict use comparer.
+Allow python dict/set redefine hash and equals operations like csharp.
 
-Uou can easy to create your own comparers.
+You are able to create your own comparers.
 
 ## Usage
 
