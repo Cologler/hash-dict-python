@@ -63,7 +63,7 @@ class AnyComparer(IEqualityComparer):
             pass
 
         try:
-            return hash(type(obj))
+            return hash(type(obj)) # hope you gay wont change object type.
         except:
             pass
 
