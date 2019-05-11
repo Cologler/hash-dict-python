@@ -49,15 +49,25 @@ class ObjectComparer(IEqualityComparer):
 ObjectComparer.instance =  ObjectComparer()
 
 class AnyComparer(IEqualityComparer):
-    ' default comparer implemention for object '
+    '''
+    default comparer implemention for any object,
+    whatever the object is hashable or not.
+    '''
 
     instance: IEqualityComparer = None
 
     def get_hash(self, obj):
         try:
             return hash(obj)
-        except TypeError:
-            return 0
+        except:
+            pass
+
+        try:
+            return hash(type(obj))
+        except:
+            pass
+
+        return 110 # call police!
 
     def equals(self, left, right):
         return left == right

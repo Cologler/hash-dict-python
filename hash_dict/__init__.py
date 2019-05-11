@@ -10,5 +10,6 @@ from .hash_set import HashSet
 
 from .comparer import (
     IEqualityComparer,
+    ObjectComparer, AnyComparer,
     StringComparers,
 )
