@@ -21,13 +21,11 @@ def test_any_comparer():
     hd = HashDict(AnyComparer.instance)
     hd[d] = 15
     assert hd[d] == 15
-    assert hd[{}] == 15 # oh, wtf
     d['k'] = 'v'
     assert hd[d] == 15
-    assert hd[{'k': 'v'}] == 15 # oh, no!
     with raises(KeyError):
         hd[{}]
-        
+
     hd[None] = 10
     assert hd[None] == 10
 
@@ -35,4 +33,3 @@ def test_obj_comparer():
     s = HashDict(ObjectComparer())
     s[0] = 15
     assert s[0] == 15
-    
