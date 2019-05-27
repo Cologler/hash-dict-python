@@ -5,6 +5,8 @@
 #
 # ----------
 
+import itertools
+
 from pytest import raises
 
 from hash_dict import HashDict, StringComparers, IEqualityComparer
@@ -32,3 +34,10 @@ def test_hashdict_str_ignorecase():
 
     assert test_dict['a'] == 1
     assert test_dict['A'] == 1
+
+def test_hashdict_copy():
+    pass
+
+def test_hashdict_fromkeys():
+    test_dict = HashDict.fromkeys(range(10))
+    assert list(test_dict.values()) == list(itertools.repeat(None, 10))

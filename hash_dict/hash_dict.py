@@ -52,3 +52,17 @@ class HashDict(MutableMapping):
         '''
         # overwrite to ensure this is atomic
         return self._data.setdefault(BoxedKey(self._comparer, key), value)
+
+    def copy(self):
+        'Make a shallow copy'
+        new_one = HashDict(self._comparer)
+        new_one.update(self)
+        return new_one
+
+    @staticmethod
+    def fromkeys(iterable, value=None, *, comparer: IEqualityComparer = None):
+        'Create a new dictionary with keys from iterable and values set to value.'
+        new_one = HashDict(comparer)
+        for item in iterable:
+            new_one[item] = value
+        return new_one

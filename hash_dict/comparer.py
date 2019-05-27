@@ -51,26 +51,16 @@ ObjectComparer.instance =  ObjectComparer()
 class AnyComparer(IEqualityComparer):
     '''
     default comparer implemention for any object,
-    whatever the object is hashable or not.
+    use this to compare objects with `is`
     '''
 
     instance: IEqualityComparer = None
 
-    def get_hash(self, obj):
-        try:
-            return hash(obj)
-        except:
-            pass
-
-        try:
-            return hash(type(obj)) # hope you gay wont change object type.
-        except:
-            pass
-
-        return 110 # call police!
+    def get_hash(self, obj)
+        return object.__hash__(obj)
 
     def equals(self, left, right):
-        return left == right
+        return left is right
 
 AnyComparer.instance = AnyComparer()
 
