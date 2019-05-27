@@ -5,15 +5,29 @@
 #
 # ----------
 
+from pytest import raises
+
 from hash_dict import HashDict
 from hash_dict.comparer import (
     AnyComparer, ObjectComparer
 )
 
 def test_any_comparer():
-    s = HashDict(AnyComparer())
-    s[None] = 15
-    assert s[None] == 15
+    d = {}
+    with raises(TypeError, match='unhashable type'):
+        d[{}] = 1
+    assert len(d) == 0
+
+    hd = HashDict(AnyComparer.instance)
+    hd[d] = 15
+    assert hd[d] == 15
+    d['k'] = 'v'
+    assert hd[d] == 15
+    with raises(KeyError):
+        hd[{}]
+
+    hd[None] = 10
+    assert hd[None] == 10
 
 def test_obj_comparer():
     s = HashDict(ObjectComparer())
