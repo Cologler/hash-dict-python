@@ -56,7 +56,7 @@ class AnyComparer(IEqualityComparer):
 
     instance: IEqualityComparer = None
 
-    def get_hash(self, obj)
+    def get_hash(self, obj):
         return object.__hash__(obj)
 
     def equals(self, left, right):
